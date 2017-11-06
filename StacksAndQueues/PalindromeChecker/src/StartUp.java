@@ -7,6 +7,7 @@ public class StartUp {
         Scanner scanner = new Scanner(System.in);
 
         String input = scanner.nextLine();
+
         ArrayDeque<Character> word = new ArrayDeque<>();
         for (char c : input.toCharArray()) {
             word.add(c);
