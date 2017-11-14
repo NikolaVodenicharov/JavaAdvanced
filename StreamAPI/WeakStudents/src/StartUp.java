@@ -14,21 +14,11 @@ public class StartUp {
                 students
                         .entrySet()
                         .stream()
-                        .filter(entry -> {
-                            boolean isWeakStudent = false;
-                            int counter = 0;
-                            for (Integer integer : entry.getValue()) {
-                                if (integer <= 3){
-                                    counter++;
-                                    if (counter == 2){
-                                        isWeakStudent = true;
-                                        break;
-                                    }
-                                }
-
-                            }
-                            return isWeakStudent;
-                        })
+                        .filter(entry -> entry
+                                .getValue()
+                                .stream()
+                                .filter(grade -> grade <= 3)
+                                .count() >= 2)
                         .collect(Collectors.toMap(
                                 Map.Entry::getKey,
                                 Map.Entry::getValue,
